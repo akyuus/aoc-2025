@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 
 pub fn part1(lines: impl Iterator<Item = String>) {
     let grid: Vec<Vec<u8>> = lines.map(|s| s.into_bytes()).collect();

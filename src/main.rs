@@ -94,6 +94,20 @@ fn main() -> io::Result<()> {
                 _ => panic!("Part must be 1 or 2"),
             }
         }
+        "day8" => {
+            let file = File::open("input/day8")?;
+            let reader = BufReader::new(file);
+            let lines = reader.lines().map_while(Result::ok);
+            match part {
+                1 => {
+                    day8::part1(lines);
+                }
+                2 => {
+                    day8::part2(lines);
+                }
+                _ => panic!("Part must be 1 or 2"),
+            }
+        }
         _ => unimplemented!(),
     }
 
