@@ -2,6 +2,7 @@ use std::{
     env,
     fs::File,
     io::{self, BufRead, BufReader},
+    time::Instant,
 };
 
 mod days;
@@ -17,6 +18,7 @@ fn main() -> io::Result<()> {
         .parse()
         .expect("Part must be 1 or 2");
 
+    let now = Instant::now();
     match day.as_str() {
         "day1" => {
             let file = File::open("input/day1")?;
@@ -136,8 +138,38 @@ fn main() -> io::Result<()> {
                 _ => panic!("Part must be 1 or 2"),
             }
         }
+        "day11" => {
+            let file = File::open("input/day11")?;
+            let reader = BufReader::new(file);
+            let lines = reader.lines().map_while(Result::ok);
+            match part {
+                1 => {
+                    day11::part1(lines);
+                }
+                2 => {
+                    day11::part2(lines);
+                }
+                _ => panic!("Part must be 1 or 2"),
+            }
+        }
+        "day12" => {
+            let file = File::open("input/day12")?;
+            let reader = BufReader::new(file);
+            let lines = reader.lines().map_while(Result::ok);
+            match part {
+                1 => {
+                    day12::part1(lines);
+                }
+                2 => {
+                    day12::part2(lines);
+                }
+                _ => panic!("Part must be 1 or 2"),
+            }
+        }
         _ => unimplemented!(),
     }
+    let elapsed = now.elapsed();
+    println!("Time elapsed: {:.5?}", elapsed);
 
     Ok(())
 }
