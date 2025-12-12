@@ -108,6 +108,34 @@ fn main() -> io::Result<()> {
                 _ => panic!("Part must be 1 or 2"),
             }
         }
+        "day9" => {
+            let file = File::open("input/day9")?;
+            let reader = BufReader::new(file);
+            let lines = reader.lines().map_while(Result::ok);
+            match part {
+                1 => {
+                    day9::part1(lines);
+                }
+                2 => {
+                    day9::part2(lines);
+                }
+                _ => panic!("Part must be 1 or 2"),
+            }
+        }
+        "day10" => {
+            let file = File::open("input/day10")?;
+            let reader = BufReader::new(file);
+            let lines = reader.lines().map_while(Result::ok);
+            match part {
+                1 => {
+                    day10::part1(lines);
+                }
+                2 => {
+                    day10::part2(lines);
+                }
+                _ => panic!("Part must be 1 or 2"),
+            }
+        }
         _ => unimplemented!(),
     }
 
